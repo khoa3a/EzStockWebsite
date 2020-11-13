@@ -27,16 +27,18 @@ class LoginPage extends React.Component {
 
         this.setState({ submitted: true });
         const { username, password } = this.state;
-        if (username && password) {
+        if (username && password) {            
             axios.post(
-                'http://localhost:4000/users/signin', 
+                'http://localhost:83/api/account/login', 
                 { 
-                    username: username.value, 
-                    password: password.value 
+                    username: username, 
+                    password: password 
                 }
             ).then(response => {        
-                setUserSession(response.data.token, response.data.user);
-                this.props.history.push('/dashboard');
+                if(response.data.isSuccess == true) {
+                    setUserSession(response.data.token, username);
+                    this.props.history.push('/dashboard');
+                }                
             }).catch(error => {
                 if (error.response.status === 401) {
                     //setError(error.response.data.message);

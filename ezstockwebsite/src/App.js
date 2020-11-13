@@ -18,9 +18,11 @@ function App() {
       return;
     }
 
-    axios.get(`http://localhost:4000/verifyToken?token=${token}`).then(response => {
-      setUserSession(response.data.token, response.data.user);
-      setAuthLoading(false);
+    axios.get(`http://localhost:83/api/account/verifyToken?token=${token}`).then(response => {
+      if(response.data.isSuccess == true) {
+        setUserSession(token, response.data.username);
+        setAuthLoading(false);
+      }
     }).catch(error => {
       removeUserSession();
       setAuthLoading(false);

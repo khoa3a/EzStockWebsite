@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { getToken } from '../../Utils/Common';
+import { getToken } from '../helpers/session.helper';
 
 // handle the private routes
 export const PrivateRoute = ({ component: Component, ...rest }) => (

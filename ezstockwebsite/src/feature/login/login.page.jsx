@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { setUserSession } from '../../Utils/Common';
+import { setUserSession } from '../../non-feature/helpers/session.helper';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class LoginPage extends React.Component {
             ).then(response => {        
                 if(response.data.isSuccess == true) {
                     setUserSession(response.data.token, username);
-                    this.props.history.push('/dashboard');
+                    this.props.history.push('/stock');
                 }                
             }).catch(error => {
                 if (error.response.status === 401) {

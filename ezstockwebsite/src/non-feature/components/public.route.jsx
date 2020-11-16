@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { getToken } from '../../Utils/Common';
+import { getToken } from '../helpers/session.helper';
 
 // handle the public routes
 export const PublicRoute = ({ component: Component, ...rest }) => (
